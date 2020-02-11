@@ -1,5 +1,5 @@
 #[macro_export]
-macro_rules! serde_str_enum {
+macro_rules! str_enum {
     ($name:ident { $($variant:ident($str:expr), )* }) => {
         #[derive(Clone, Copy, Debug, Eq, PartialEq)]
         pub enum $name {

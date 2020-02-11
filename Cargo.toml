@@ -1,10 +1,12 @@
 [package]
 name = "serde_utils"
 version = "0.1.0"
-authors = ["Thomas BAGREL <tomsb07@gmail.com>"]
+authors = ["TRACIP SAS <contact@tracip.fr>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
+hex = "0.3"
+chrono = "0.4"
