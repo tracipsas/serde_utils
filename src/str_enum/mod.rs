@@ -6,6 +6,14 @@ macro_rules! serde_str_enum {
             $($variant,)*
         }
 
+        impl std::fmt::Display for $name {
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
+                write!(f, "{}", match *self {
+                    $( $name::$variant => $str, )*
+                })
+            }
+        }
+
         impl serde::Serialize for $name {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
                 where S: serde::Serializer,
