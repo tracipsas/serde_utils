@@ -1,6 +1,6 @@
 [package]
 name = "serde_utils"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["TRACIP SAS <contact@tracip.fr>"]
 edition = "2018"
 
