@@ -32,3 +32,19 @@ pub mod option {
             .transpose()
     }
 }
+
+pub mod vec {
+    use serde::Deserialize;
+
+    pub fn serialize<S: serde::Serializer>(data: &Vec<Vec<u8>>, serializer: S) -> Result<S::Ok, S::Error> {
+        serializer.collect_seq(data.iter().map(|elt| hex::encode(elt)))
+    }
+
+    pub fn deserialize<'de, D: serde::Deserializer<'de>>(deserializer: D) -> Result<Vec<Vec<u8>>, D::Error> {
+        let string_seq = Vec::<String>::deserialize(deserializer)?;
+        string_seq
+            .into_iter()
+            .map(|string| hex::decode(string).map_err(serde::de::Error::custom))
+            .collect()
+    }
+}
