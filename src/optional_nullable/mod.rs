@@ -20,5 +20,8 @@ where
     T: Serialize,
     S: Serializer,
 {
-    data.flatten().serialize(serializer)
+    data.as_ref()
+        .map(Option::as_ref)
+        .flatten()
+        .serialize(serializer)
 }
