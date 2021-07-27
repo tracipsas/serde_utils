@@ -15,7 +15,7 @@ where
     Ok(Some(Option::deserialize(deserializer)?))
 }
 
-pub fn serialize<T, S>(data: Option<Option<T>>, serializer: S) -> Result<S::Ok, S::Error>
+pub fn serialize<T, S>(data: &Option<Option<T>>, serializer: S) -> Result<S::Ok, S::Error>
 where
     T: Serialize,
     S: Serializer,
